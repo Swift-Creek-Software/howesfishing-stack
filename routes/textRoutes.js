@@ -17,7 +17,7 @@ const body = req.body
 			res.send(message.sid)
 		})
 		.catch((e) => {
-			console.log(e)
+			req.status(500).send('error with text message')
 		});
 })
 }
