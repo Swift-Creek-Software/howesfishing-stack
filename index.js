@@ -7,7 +7,7 @@ app.use(require('./middleware/allowCrossDomain'))
 app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
-	res.send({hi: 'der'})
+	res.send({hi: 'howes'})
 })
 
 require('./routes/textRoutes')(app)
