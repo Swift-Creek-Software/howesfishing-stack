@@ -3,7 +3,7 @@ const keys = require('../config/keys')
 
 const client = new twilio(keys.twilioAccountSid, keys.twilioAuthToken);
 module.exports = (app) => {
-app.post('/text', (req, res) => {
+app.post('/api/text', (req, res) => {
 	console.log('hit the text route', )
 
 const body = req.body
