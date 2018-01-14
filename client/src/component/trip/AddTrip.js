@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import moment from 'moment-timezone'
 import { Link, withRouter } from 'react-router-dom'
 
-import { sendSMS } from '../../actions/NexmoActions'
+import { sendSMS } from '../../actions/TextActions'
 import {
 	sendClientConfirmationEmail,
 	sendGuideConfirmationEmail,

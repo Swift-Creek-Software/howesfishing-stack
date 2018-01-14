@@ -8,26 +8,27 @@ import LoginForm from './LoginForm'
 import './Common/Common.css'
 
 class Login extends PureComponent {
-	static propTypes = {
-		user: PropTypes.object
-	}
+  static propTypes = {
+    user: PropTypes.object
+  }
 
-	render() {
-		if (this.props.user.isLoggedIn) {
-			return <Redirect to={'/admin/dashboard'}/>
-		}
 
-		return (
-			<div className="form-wrapper">
-				<LoginForm/>
-			</div>
-		)
-	}
+  render() {
+    if (this.props.user.isLoggedIn) {
+      return <Redirect to={'/admin/dashboard'}/>
+    }
+
+    return (
+      <div className="form-wrapper">
+        <LoginForm/>
+      </div>
+    )
+  }
 }
 
 export default connect(state => {
-		return {
-			user: state.user
-		}
-	}
+    return {
+      user: state.user
+    }
+  },
 )(withRouter(Login))

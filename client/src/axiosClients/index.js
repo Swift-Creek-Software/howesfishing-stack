@@ -1,6 +1,6 @@
 import { multiClientMiddleware } from 'redux-axios-middleware'
 import { howesFishingClient, howesFishingOptions } from './howesFishing'
-import { nexmoClient, nexmoOptions } from './nexmoClient'
+import { baseClient, baseClientOptions } from './baseApi'
 
 export default () => {
 	return multiClientMiddleware(
@@ -9,9 +9,9 @@ export default () => {
 				client: howesFishingClient,
 				options: howesFishingOptions
 			},
-			nexmo: {
-				client: nexmoClient,
-				options: nexmoOptions
+			base: {
+        client: baseClient,
+        options: baseClientOptions
 			}
 		},
 		//options
