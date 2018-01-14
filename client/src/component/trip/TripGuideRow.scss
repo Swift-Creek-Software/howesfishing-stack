@@ -1,0 +1,25 @@
+.TripGuideRow {
+  border-bottom: 1px solid gainsboro;
+  padding: 10px 2px;
+  box-sizing: border-box;
+
+  .guide-field {
+    width: 46%;
+    margin: 7px 2%;
+    display: inline-block;
+
+    &.template {
+      width: 98%;
+    }
+  }
+
+
+  .guide-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  h4 {
+    margin: 0;
+  }
+}

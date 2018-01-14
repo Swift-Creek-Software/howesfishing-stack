@@ -1,0 +1,21 @@
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+
+  form{
+    width: 300px;
+    border-radius: 5px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+    border: 1px solid gainsboro;
+    box-sizing: border-box;
+  }
+}
+
+$break: 550px;
+
+.group-header {
+  border-bottom: 1px solid gainsboro;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 5px;
+}

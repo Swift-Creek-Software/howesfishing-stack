@@ -1,0 +1,57 @@
+.rbc-event {
+  background-color: inherit !important;
+  border: none !important;
+}
+
+.rbc-toolbar {
+  @media (max-width: 600px) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  > * {
+    @media (max-width: 600px) {
+      margin: 5px 0;
+    }
+  }
+}
+
+.Calendar {
+  height: calc(100% - 150px);
+  min-height: 425px;
+  padding: 0 50px;
+  box-sizing: border-box;
+
+  @media (max-width: 600px) {
+    padding: 0 10px;
+    height: calc(100% - 170px);
+  }
+
+  &.full {
+    height: 100%;
+  }
+
+  .refresh {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+
+    @media (min-width: 601px) {
+      flex-direction: row;
+    }
+
+    * {
+      flex: 1 1 100%;
+      min-width: 100%;
+
+      @media (min-width: 601px) {
+        min-width: 50%;
+        flex: 1 1 50%;
+      }
+    }
+    .link {
+      text-align: right;
+    }
+  }
+}

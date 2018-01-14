@@ -1,0 +1,21 @@
+.Guide form {
+  width: 96%;
+  max-width: 650px;
+  border-radius: 5px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+  border: 1px solid gainsboro;
+  box-sizing: border-box; }
+  .Guide form .button-row {
+    text-align: right; }
+    .Guide form .button-row * {
+      margin-left: 10px; }
+
+.Guide .guides-data-table {
+  margin: 0 auto; }
+  .Guide .guides-data-table .guide-data-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid gainsboro;
+    margin-bottom: 10px;
+    padding: 2px; }

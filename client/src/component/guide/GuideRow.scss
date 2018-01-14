@@ -1,0 +1,8 @@
+.GuideRow {
+  td.condensed {
+    max-width: 100px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
