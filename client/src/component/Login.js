@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Redirect, withRouter } from 'react-router-dom'
 
-
 import LoginForm from './LoginForm'
 import './Common/Common.css'
 
@@ -11,7 +10,6 @@ class Login extends PureComponent {
   static propTypes = {
     user: PropTypes.object
   }
-
 
   render() {
     if (this.props.user.isLoggedIn) {
