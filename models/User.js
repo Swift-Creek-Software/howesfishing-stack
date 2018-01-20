@@ -12,4 +12,4 @@ const userSchema = new Schema({
   updatedAt: Date
 })
 
-mongoose.model('users', userSchema)
+mongoose.model('User', userSchema, 'user')

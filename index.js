@@ -2,6 +2,11 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose')
 const app = express()
+const keys = require('./config/keys')
+require('./models/User')
+
+mongoose.connect(keys.mongoURI, { useMongoClient: true })
+mongoose.Promise = global.Promise;
 
 app.use(require('./middleware/allowCrossDomain'))
 app.use(bodyParser.json())
