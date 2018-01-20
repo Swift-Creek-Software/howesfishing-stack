@@ -17,8 +17,9 @@ export const login = (email, password) => {
 	return {
 		type: actionTypes.login,
 		payload: {
+      client: 'base',
 			request: {
-				url: '/auth',
+				url: '/api/login',
 				method: 'post',
 				data: {
 					email,
