@@ -7,9 +7,9 @@ const userSchema = new Schema({
   isAdmin: Boolean,
   access: Array,
   deleted: Boolean,
-  encryptedPasswored: String,
+  encryptedPassword: String,
   createdAt: Date,
-  updatedAt: Date
+  updatedAt: Date,
 })
 
 mongoose.model('User', userSchema, 'user')
