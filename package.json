@@ -23,6 +23,7 @@
     "express": "^4.16.2",
     "jsonwebtoken": "^7.3.0",
     "mongoose": "^4.13.9",
+    "sparkpost": "^2.1.2",
     "twilio": "^3.11.0"
   },
   "devDependencies": {
