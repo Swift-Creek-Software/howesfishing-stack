@@ -1,9 +1,12 @@
 const twilio = require('twilio');
 const keys = require('../config/keys')
+const isAdmin = require('../middleware/isAdmin')
+const isAuthenticated = require('../middleware/isAuthenticated')
+
 
 const client = new twilio(keys.twilioAccountSid, keys.twilioAuthToken);
 module.exports = (app) => {
-  app.post('/api/text', (req, res) => {
+  app.post('/api/text', isAuthenticated, isAdmin, (req, res) => {
     console.log('hit the text route', req.body)
 
     const body = req.body

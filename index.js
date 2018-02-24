@@ -14,6 +14,7 @@ app.use(bodyParser.json())
 
 require('./routes/textRoutes')(app)
 require('./routes/authRoutes')(app)
+require('./routes/healthCheck')(app)
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT)
