@@ -1,5 +1,6 @@
 const SparkPost = require('sparkpost')
-const client = new SparkPost()
+const keys = require('../config/keys')
+const client = new SparkPost(keys.sparkpostId)
 
 module.exports = {
   /**

@@ -1,26 +1,25 @@
-const twilio = require('twilio');
-const keys = require('../config/keys')
+const EmailService = require('../services/EmailService')
 const isAdmin = require('../middleware/isAdmin')
 const isAuthenticated = require('../middleware/isAuthenticated')
+const mongoose = require('mongoose')
 
+const Email = mongoose.model('Email')
 
-const client = new twilio(keys.twilioAccountSid, keys.twilioAuthToken);
 module.exports = (app) => {
-  app.post('/api/text', isAuthenticated, isAdmin, (req, res) => {
-    console.log('hit the text route', req.body)
-
-    const body = req.body
-    client.messages.create({
-      body: body.body,
-      to: '+' + body.number,  // Text this number +
-      from: keys.twilioFrom// From a valid Twilio number
-    })
-      .then((message) => {
-        console.log(message.sid)
-        res.send(message.sid)
+  app.post('/api/email', isAuthenticated, isAdmin, (req, res) => {
+    const params = { ...req.body }
+    console.log('hit the email route', params)
+    EmailService
+      .sendEmail(params)
+      .then(data => {
+        return Email.create({ sparkpostResponse: data, params: params })
       })
-      .catch((e) => {
-        res.status(500).send('error with text message')
-      });
+      .then(emailLogRecord => {
+        return res.send(emailLogRecord)
+      })
+      .catch(err => {
+        // error sending email
+        return res.status(401).json({ err })
+      })
   })
 }
