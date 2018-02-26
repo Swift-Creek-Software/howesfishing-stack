@@ -20,8 +20,9 @@ export const fetchGuides = () => {
 	return {
 		type: actionTypes.fetchGuides,
 		payload: {
+      client: 'base',
 			request: {
-				url: '/guide',
+				url: 'api/guides',
 			}
 		}
 	}
