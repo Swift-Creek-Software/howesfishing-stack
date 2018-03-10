@@ -32,8 +32,9 @@ export const addGuide = (data) => {
 	return {
 		type: actionTypes.addGuide,
 		payload: {
+      client: 'base',
 			request: {
-				url: '/guide',
+				url: 'api/guides',
 				method: 'post',
 				data
 			}
@@ -45,8 +46,9 @@ export const updateGuide = (data) => {
 	return {
 		type: actionTypes.updateGuide,
 		payload: {
+      client: 'base',
 			request: {
-				url: `/guide/${data.id}`,
+				url: `api/guides/${data.id}`,
 				method: 'put',
 				data
 			}
@@ -58,12 +60,10 @@ export const deleteGuide = (id) => {
 	return {
 		type: actionTypes.deleteGuide,
 		payload: {
+      client: 'base',
 			request: {
-				url: `/guide/${id}`,
-				method: 'put',
-				data: {
-					deleted: true
-				}
+				url: `api/guides/${id}`,
+				method: 'delete',
 			},
 			id
 

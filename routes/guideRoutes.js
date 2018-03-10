@@ -16,12 +16,33 @@ module.exports = (app) => {
   })
 
   app.post('/api/guides', isAuthenticated, isAdmin, async (req, res) => {
-    Guide.find({deleted: false}, (err, guides) => {
+    Guide.create(req.body, (err, guide) => {
       if(err) {
         res.status(500).json({error: err})
       }
 
-      res.send(guides)
+      res.send(guide)
     })
+  })
+
+  app.put('/api/guides/:id', isAuthenticated, isAdmin, async (req, res) => {
+    const guide = {...req.body}
+    Guide.findOneAndUpdate({_id: req.params.id}, guide, (err) => {
+      if(err) {
+        res.status(500).json({error: err})
+      }
+      res.send(guide)
+    })
+
+  })
+
+  app.delete('/api/guides/:id', isAuthenticated, isAdmin, async (req, res) => {
+    Guide.findOneAndUpdate({_id: req.params.id}, {deleted: true}, (err, guide) => {
+      if(err) {
+        res.status(500).json({error: err})
+      }
+      res.send(guide)
+    })
+
   })
 }

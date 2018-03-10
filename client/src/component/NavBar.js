@@ -16,7 +16,6 @@ class NavBar extends PureComponent {
 	onLogoutClick = (event) => {
 		event.preventDefault()
 		this.props.logout()
-		// this.props.location.push('/admin/login')
 	}
 
 	renderNavItems = () => {
@@ -26,15 +25,15 @@ class NavBar extends PureComponent {
 		if (this.props.user.isAdmin) {
 			return (
 				<Nav>
-					<ListItemLink to="/admin/dashboard">Dashboard</ListItemLink>
-					<ListItemLink to="/admin/guides">Guides</ListItemLink>
-					<ListItemLink to="/admin/trip">Add Trip</ListItemLink>
+					<ListItemLink to="/dashboard">Dashboard</ListItemLink>
+					<ListItemLink to="/guides">Guides</ListItemLink>
+					<ListItemLink to="/trip">Add Trip</ListItemLink>
 				</Nav>
 			)
 		} else {
 			return (
 				<Nav>
-					<ListItemLink to="/admin/dashboard">Dashboard</ListItemLink>
+					<ListItemLink to="/dashboard">Dashboard</ListItemLink>
 
 				</Nav>
 			)
@@ -47,7 +46,7 @@ class NavBar extends PureComponent {
 			return (
 				<Nav pullRight>
 					{true &&
-					<ListItemLink to="/admin/password">Password Change</ListItemLink>
+					<ListItemLink to="/password">Password Change</ListItemLink>
 					}
 					<NavItem eventKey={1} onClick={this.onLogoutClick}>Logout</NavItem>
 				</Nav>
@@ -55,7 +54,7 @@ class NavBar extends PureComponent {
 		} else {
 			return (
 				<Nav pullRight>
-					<ListItemLink to="/admin/login">Login</ListItemLink>
+					<ListItemLink to="/login">Login</ListItemLink>
 				</Nav>
 			)
 		}

@@ -13,7 +13,7 @@ class Login extends PureComponent {
 
   render() {
     if (this.props.user.isLoggedIn) {
-      return <Redirect to={'/admin/dashboard'}/>
+      return <Redirect to={'/dashboard'}/>
     }
 
     return (

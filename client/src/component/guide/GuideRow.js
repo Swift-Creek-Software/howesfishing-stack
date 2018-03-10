@@ -16,7 +16,7 @@ class GuideRow extends Component {
 		return (
 			<tr className="GuideRow" onClick={() => {
 				this.props.setEditingGuide(this.props.guide.id)
-				this.props.history.push(`/admin/guide?editing`)
+				this.props.history.push(`/guide?editing`)
 			}}>
 				<td>{this.props.guide.name}</td>
 				<td className="condensed">{this.props.guide.phones.join(', ')}</td>

@@ -24,15 +24,15 @@ class App extends Component {
 			<Router>
 				<div style={{ height: '100%' }}>
 					<Navbar />
-					<Route exact path="/admin/" render={() => (
-						<Redirect to="/admin/dashboard"/>
+					<Route exact path="/" render={() => (
+						<Redirect to="/dashboard"/>
 					)}/>
-					<Route exact path="/admin/login" component={Login}/>
-					<PrivateRoute path="/admin/trip" component={AddTrip} user={user} isAdmin/>
-					<PrivateRoute path="/admin/guide" component={Guide} user={user} isAdmin/>
-					<PrivateRoute path="/admin/guides" component={Guides} user={user} isAdmin/>
-					<PrivateRoute path="/admin/dashboard" component={Dashboard} user={user}/>
-					<PrivateRoute path="/admin/password" component={PasswordChange} user={user}/>
+					<Route exact path="/login" component={Login}/>
+					<PrivateRoute path="/trip" component={AddTrip} user={user} isAdmin/>
+					<PrivateRoute path="/guide" component={Guide} user={user} isAdmin/>
+					<PrivateRoute path="/guides" component={Guides} user={user} isAdmin/>
+					<PrivateRoute path="/dashboard" component={Dashboard} user={user}/>
+					<PrivateRoute path="/password" component={PasswordChange} user={user}/>
 					{ loading &&
 						<div className="overlay">
 							<div className="overlay-modal">

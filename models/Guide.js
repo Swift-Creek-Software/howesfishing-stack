@@ -7,6 +7,7 @@ const guideSchema = new Schema({
   phones: Array,
   deleted: Boolean,
   color: String,
+  userId: String,
   createdAt: Date,
   updatedAt: Date,
 })

@@ -25,7 +25,7 @@ class Guides extends PureComponent {
 			<div className="Guides">
 				<div className="header-wrapper">
 					<h1>Guides</h1>
-					<Link to="/admin/guide" className="btn btn-primary">+Add Guide</Link>
+					<Link to="/guide" className="btn btn-primary">+Add Guide</Link>
 				</div>
 				<Table responsive hover condensed>
 					<thead>

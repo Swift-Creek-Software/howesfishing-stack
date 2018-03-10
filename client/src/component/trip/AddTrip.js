@@ -131,7 +131,7 @@ class AddTrip extends Component {
 					// send client/admin email
 					this.props.sendClientConfirmationEmail({...values, userName: this.props.user.name.split(' ')[0]})
 				}
-				this.props.history.push('/admin/dashboard')
+				this.props.history.push('/dashboard')
 
 			})
 		} else {
@@ -144,7 +144,7 @@ class AddTrip extends Component {
 					// send client/admin email
 					this.props.sendClientConfirmationEmail({...values, userName: this.props.user.name.split(' ')[0]})
 				}
-				this.props.history.push('/admin/dashboard')
+				this.props.history.push('/dashboard')
 
 			})
 		}
@@ -253,7 +253,7 @@ class AddTrip extends Component {
 
 			// move back to the dashboard with no trip selected
 			this.props.setCurrentTrip()
-			this.props.history.push('/admin/dashboard')
+			this.props.history.push('/dashboard')
 		})
 
 
@@ -399,7 +399,7 @@ class AddTrip extends Component {
 						<button type="submit" className="btn btn-primary" style={{ float: 'right' }}>
 							{this.props.initialValues.id ? 'Save Trip' : 'Create Trip'}
 						</button>
-						<Link to="/admin/dashboard" className="btn btn-warning" style={{ float: 'right', marginRight: 10 }}>Cancel</Link>
+						<Link to="/dashboard" className="btn btn-warning" style={{ float: 'right', marginRight: 10 }}>Cancel</Link>
 					</div>
 				</form>
 				{this.state.showDeleteModal &&

@@ -13,7 +13,7 @@ const PrivateRoute = ({ component, user, isAdmin, ...rest }) => {
 					} else {
 						return (
 							<Redirect to={{
-								pathname: '/admin/dashboard',
+								pathname: '/dashboard',
 								state: { from: props.location }
 							}}/>
 						)
@@ -25,7 +25,7 @@ const PrivateRoute = ({ component, user, isAdmin, ...rest }) => {
 			} else {
 				return (
 					<Redirect to={{
-						pathname: '/admin/login',
+						pathname: '/login',
 						state: { from: props.location }
 					}}/>
 				)

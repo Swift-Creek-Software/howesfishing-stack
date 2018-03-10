@@ -70,7 +70,7 @@ class PasswordChange extends PureComponent {
 			...values,
 			id: this.props.user.id
 		})
-		this.props.history.push('/admin/dashboard')
+		this.props.history.push('/dashboard')
 	}
 
 	render() {

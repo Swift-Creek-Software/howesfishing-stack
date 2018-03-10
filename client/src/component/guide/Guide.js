@@ -98,7 +98,7 @@ class Guide extends PureComponent {
 				password
 			})
 		}
-		this.props.history.push('/admin/guides')
+		this.props.history.push('/guides')
 	}
 
 	renderEmails = ({ fields, meta: { error } }) => {
@@ -196,7 +196,7 @@ class Guide extends PureComponent {
 
 		this.props.deleteGuide(this.props.initialValues.id)
 		this.props.deleteUser(this.props.initialValues.userId)
-		this.props.history.push('/admin/guides')
+		this.props.history.push('/guides')
 	}
 
 
@@ -224,7 +224,7 @@ class Guide extends PureComponent {
 							<button className="btn btn-danger" style={{float: 'left'}} onClick={this.onDeleteButtonClick}>
 								Delete Guide
 							</button>
-							<Link to='/admin/guides' className="btn btn-warning">Cancel</Link>
+							<Link to='/guides' className="btn btn-warning">Cancel</Link>
 							<button className="btn btn-primary">
 								{this.props.initialValues ? 'Save' : 'Add Guide'}
 							</button>
