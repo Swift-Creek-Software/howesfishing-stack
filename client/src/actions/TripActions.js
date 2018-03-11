@@ -11,31 +11,15 @@ export const actionTypes = {
 	setLoading: 'SET_LOADING'
 }
 
-export const login = (email, password) => {
-	return {
-		type: actionTypes.login,
-		payload: {
-			request:{
-				url:'/auth',
-				method: 'post',
-				data: {
-					email,
-					password
-				}
-			}
-		}
-	}
-}
-
 export const fetchTrips = (limit = 300) => {
 	return {
 		type: actionTypes.fetchTrips,
 		payload: {
+      client: 'base',
 			request: {
-				url: `/trip`,
+				url: `api/trips`,
 				params: {
-					limit,
-					sort: 'endTime DESC'
+					limit
 				}
 			}
 		}
