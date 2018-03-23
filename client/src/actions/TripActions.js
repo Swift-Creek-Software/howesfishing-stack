@@ -30,8 +30,9 @@ export const addTrip = (data) => {
 	return {
 		type: actionTypes.addTrip,
 		payload: {
+      client: 'base',
 			request: {
-				url: '/trip',
+				url: 'api/trips',
 				method: 'post',
 				data
 			}
@@ -43,8 +44,9 @@ export const updateTrip = (data) => {
 	return {
 		type: actionTypes.updateTrip,
 		payload: {
+      client: 'base',
 			request: {
-				url: `/trip/${data.id}`,
+				url: `api/trips/${data.id}`,
 				method: 'put',
 				data
 			}
@@ -56,12 +58,10 @@ export const deleteTrip = (id) => {
 	return {
 		type: actionTypes.deleteTrip,
 		payload: {
+      client: 'base',
 			request: {
-				url: `/trip/${id}`,
-				method: 'put',
-				data: {
-					deleted: true
-				}
+				url: `api/trips/${id}`,
+				method: 'delete',
 			},
 			id
 		}

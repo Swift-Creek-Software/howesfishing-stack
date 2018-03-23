@@ -392,7 +392,7 @@ class AddTrip extends Component {
 							   label="Notes"
 							   placeholder="add notes here..."
 						/>
-						{isEditing && isAble &&
+						{isEditing &&
 						<buton onClick={this.onDeleteButtonClick} className="btn btn-danger">Delete Trip</buton>
 						}
 

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const isAuthenticated = require('../middleware/isAuthenticated')
+const isAdmin = require('../middleware/isAdmin')
 const Trip = mongoose.model('Trip')
 
 module.exports = (app) => {
@@ -16,5 +17,36 @@ module.exports = (app) => {
 
         res.send(trips)
       })
+  })
+
+  app.post('/api/trips', isAuthenticated, isAdmin, async (req, res) => {
+    Trip.create(req.body, (err, trip) => {
+      if(err) {
+        res.status(500).json({error: err})
+      }
+
+      res.send(trip)
+    })
+  })
+
+  app.put('/api/trips/:id', isAuthenticated, isAdmin, async (req, res) => {
+    const trip = {...req.body}
+    Trip.findOneAndUpdate({_id: req.params.id}, {...trip, deleted: false}, (err, updated) => {
+      if(err) {
+        res.status(500).json({error: err})
+      }
+      res.send(updated)
+    })
+
+  })
+
+  app.delete('/api/trips/:id', isAuthenticated, isAdmin, async (req, res) => {
+    Trip.findOneAndUpdate({_id: req.params.id}, {deleted: true}, (err, trip) => {
+      if(err) {
+        res.status(500).json({error: err})
+      }
+      res.send(trip)
+    })
+
   })
 }

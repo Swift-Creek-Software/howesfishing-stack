@@ -8,7 +8,6 @@ const Email = mongoose.model('Email')
 module.exports = (app) => {
   app.post('/api/email', isAuthenticated, isAdmin, (req, res) => {
     const params = { ...req.body }
-    console.log('hit the email route', params)
     EmailService
       .sendEmail(params)
       .then(data => {
