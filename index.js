@@ -23,6 +23,7 @@ require('./routes/healthCheck')(app)
 require('./routes/locationRoutes')(app)
 require('./routes/textRoutes')(app)
 require('./routes/tripRoutes')(app)
+require('./routes/userRoutes')(app)
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT)

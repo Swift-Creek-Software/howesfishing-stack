@@ -12,4 +12,9 @@ const userSchema = new Schema({
   updatedAt: Date,
 })
 
+userSchema.set('toJSON', {
+  virtuals: true
+});
+
+
 mongoose.model('User', userSchema, 'user')

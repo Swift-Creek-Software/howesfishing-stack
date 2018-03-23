@@ -108,8 +108,9 @@ export const addUser = (data) => {
 	return {
 		type: actionTypes.addUser,
 		payload: {
+      client: 'base',
 			request: {
-				url: '/user',
+				url: 'api/users',
 				method: 'post',
 				data
 			}
@@ -121,8 +122,9 @@ export const changePassword = (data) => {
 	return {
 		type: actionTypes.changePassword,
 		payload: {
+      client: 'base',
 			request: {
-				url: `/user/${data.id}`,
+				url: `api/users/${data.id}`,
 				method: 'put',
 				data
 			}
@@ -133,12 +135,10 @@ export const deleteUser = (id) => {
 	return {
 		type: actionTypes.deleteUser,
 		payload: {
+      client: 'base',
 			request: {
-				url: `/user/${id}`,
-				method: 'put',
-				data: {
-					deleted: true
-				}
+				url: `api/users/${id}`,
+				method: 'delete',
 			}
 		}
 	}
