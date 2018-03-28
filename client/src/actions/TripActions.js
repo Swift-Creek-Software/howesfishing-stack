@@ -15,9 +15,8 @@ export const fetchTrips = (limit = 300) => {
 	return {
 		type: actionTypes.fetchTrips,
 		payload: {
-      client: 'base',
 			request: {
-				url: `api/trips`,
+				url: `trips`,
 				params: {
 					limit
 				}
@@ -30,9 +29,8 @@ export const addTrip = (data) => {
 	return {
 		type: actionTypes.addTrip,
 		payload: {
-      client: 'base',
 			request: {
-				url: 'api/trips',
+				url: 'trips',
 				method: 'post',
 				data
 			}
@@ -44,9 +42,8 @@ export const updateTrip = (data) => {
 	return {
 		type: actionTypes.updateTrip,
 		payload: {
-      client: 'base',
 			request: {
-				url: `api/trips/${data.id}`,
+				url: `trips/${data.id}`,
 				method: 'put',
 				data
 			}
@@ -58,9 +55,8 @@ export const deleteTrip = (id) => {
 	return {
 		type: actionTypes.deleteTrip,
 		payload: {
-      client: 'base',
 			request: {
-				url: `api/trips/${id}`,
+				url: `trips/${id}`,
 				method: 'delete',
 			},
 			id

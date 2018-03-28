@@ -10,9 +10,8 @@ export const sendClientConfirmationEmail = (values) => {
   return {
     type: actionTypes.sendEmail,
     payload: {
-      client: 'base',
       request: {
-        url: '/api/email',
+        url: 'email',
         method: 'post',
         data: {
           sandbox: false,
@@ -47,9 +46,8 @@ export const sendClientCancellationEmail = (values) => {
   return {
     type: actionTypes.sendEmail,
     payload: {
-      client: 'base',
       request: {
-        url: '/api/email',
+        url: 'email',
         method: 'post',
         data: {
           sandbox: false,
@@ -86,9 +84,8 @@ export const sendGuideConfirmationEmail = (values) => {
   return {
     type: actionTypes.sendEmail,
     payload: {
-      client: 'base',
       request: {
-        url: '/api/email',
+        url: 'email',
         method: 'post',
         data: {
           sandbox: false,
@@ -116,9 +113,8 @@ export const sendGuideCancellationEmail = (values) => {
   return {
     type: actionTypes.sendEmail,
     payload: {
-      client: 'base',
       request: {
-        url: '/api/email',
+        url: 'email',
         method: 'post',
         data: {
           sandbox: false,
@@ -144,9 +140,8 @@ export const sendGuidePasswordEmail = (values) => {
   return {
     type: actionTypes.sendEmail,
     payload: {
-      client: 'base',
       request: {
-        url: '/api/email',
+        url: 'email',
         method: 'post',
         data: {
           sandbox: false,

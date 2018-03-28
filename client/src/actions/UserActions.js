@@ -14,12 +14,12 @@ export const actionTypes = {
 }
 
 export const login = (email, password) => {
+	console.log('login issue')
 	return {
 		type: actionTypes.login,
 		payload: {
-      client: 'base',
 			request: {
-				url: '/api/login',
+				url: 'login',
 				method: 'post',
 				data: {
 					email,
@@ -108,9 +108,8 @@ export const addUser = (data) => {
 	return {
 		type: actionTypes.addUser,
 		payload: {
-      client: 'base',
 			request: {
-				url: 'api/users',
+				url: 'users',
 				method: 'post',
 				data
 			}
@@ -122,9 +121,8 @@ export const changePassword = (data) => {
 	return {
 		type: actionTypes.changePassword,
 		payload: {
-      client: 'base',
 			request: {
-				url: `api/users/${data.id}`,
+				url: `users/${data.id}`,
 				method: 'put',
 				data
 			}
@@ -135,9 +133,8 @@ export const deleteUser = (id) => {
 	return {
 		type: actionTypes.deleteUser,
 		payload: {
-      client: 'base',
 			request: {
-				url: `api/users/${id}`,
+				url: `users/${id}`,
 				method: 'delete',
 			}
 		}

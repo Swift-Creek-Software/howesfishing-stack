@@ -6,9 +6,8 @@ export const sendSMS = (to, text) => {
   return {
     type: actionTypes.sendSMS,
     payload: {
-      client: 'base',
       request: {
-        url: '/api/text',
+        url: 'text',
         method: 'post',
         data: {
           body: text,

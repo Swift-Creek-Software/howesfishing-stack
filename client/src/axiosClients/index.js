@@ -5,11 +5,7 @@ import { baseClient, baseClientOptions } from './baseApi'
 export default () => {
 	return multiClientMiddleware(
 		{
-			default: {
-				client: howesFishingClient,
-				options: howesFishingOptions
-			},
-			base: {
+      default: {
         client: baseClient,
         options: baseClientOptions
 			}

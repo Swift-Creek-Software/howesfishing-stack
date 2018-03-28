@@ -7,9 +7,8 @@ export const fetchLocations = () => {
   return {
     type: actionTypes.fetchLocations,
     payload: {
-      client: 'base',
       request: {
-        url: 'api/locations'
+        url: 'locations'
       },
     }
   }
