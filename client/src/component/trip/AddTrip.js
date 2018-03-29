@@ -433,6 +433,7 @@ AddTrip = connect(state => {
 				startTime: moment(state.trip.currentDashboardDate || new Date()).tz('America/Denver').hours(7).minutes(0).toDate(),
 				endTime: moment(state.trip.currentDashboardDate || new Date()).tz('America/Denver').hours(12).minutes(0).toDate(),
 				...currentTripSelector(state),
+				...state.trip.tempTrip
 			},
 		}
 	},

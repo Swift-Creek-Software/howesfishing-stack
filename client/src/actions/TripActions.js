@@ -8,7 +8,9 @@ export const actionTypes = {
 	setCurrentDate: 'SET_CURRENT_DATE',
 	setView: 'SET_VIEW',
 	updateTrip: 'UPDATE_TRIP',
-	setLoading: 'SET_LOADING'
+	setLoading: 'SET_LOADING',
+	setTempTrip: 'SET_TEMP_TRIP',
+	clearTempTrip: 'CLEAR_TEMP_TRIP',
 }
 
 export const fetchTrips = (limit = 300) => {
@@ -89,4 +91,17 @@ export const setLoading = (loading = false) => {
 		type: actionTypes.setLoading,
 		payload: loading
 	}
+}
+
+export const setTempTrip = (trip) => {
+  return {
+    type: actionTypes.setTempTrip,
+    trip,
+  }
+}
+
+export const clearTempTrip = () => {
+  return {
+    type: actionTypes.clearTempTrip,
+  }
 }
