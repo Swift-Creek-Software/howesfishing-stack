@@ -20,7 +20,7 @@ module.exports = (app) => {
   })
 
   app.post('/api/trips', isAuthenticated, isAdmin, async (req, res) => {
-    Trip.create(req.body, (err, trip) => {
+    Trip.create({...req.body, deleted: false}, (err, trip) => {
       if(err) {
         res.status(500).json({error: err})
       }
