@@ -15,7 +15,7 @@ import {
 	sendClientCancellationEmail
 } from '../../actions/EmailActions'
 
-import {addTrip, updateTrip, deleteTrip, setCurrentTrip} from '../../actions/TripActions'
+import {addTrip, updateTrip, deleteTrip, setCurrentTrip, clearTempTrip} from '../../actions/TripActions'
 import guidesById from '../../selectors/guidesById'
 import currentTripSelector from '../../selectors/currentTripSelector'
 
@@ -116,6 +116,10 @@ class AddTrip extends Component {
 		this.state = {
 			showDeleteModal: false
 		}
+	}
+
+	componentDidMount() {
+		this.props.clearTempTrip()
 	}
 
 	handleSubmit = (values) => {
@@ -448,6 +452,7 @@ AddTrip = connect(state => {
 		sendGuideConfirmationEmail,
 		sendGuideCancellationEmail,
 		sendClientCancellationEmail,
+    clearTempTrip,
 	}
 )(AddTrip)
 

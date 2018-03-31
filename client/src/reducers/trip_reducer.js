@@ -48,6 +48,7 @@ const currentDashboardDate = (state = null, action) => {
 		case actionTypes.setCurrentDate:
 			return action.payload
 		case userTypes.logout:
+		case actionTypes.clearTempTrip:
 			return null
 		default:
 			return state
@@ -83,7 +84,7 @@ const tempTrip = (state = null, action) => {
 
     case actionTypes.setTempTrip:
       return action.trip
-    case userTypes.clearTempTrip:
+    case actionTypes.clearTempTrip:
       return null
     default:
       return state
