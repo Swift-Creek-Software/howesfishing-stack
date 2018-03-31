@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Modal } from 'react-bootstrap'
 import moment from 'moment-timezone'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 import currentTripSelector from '../../selectors/currentTripSelector'
 import locationsById from '../../selectors/locationsById'
 import guidesById from '../../selectors/guidesById'
-import { setCurrentTrip } from '../../actions/TripActions'
+import { setCurrentTrip, setTempTrip } from '../../actions/TripActions'
 
 import TripData from './TripData'
 
@@ -44,6 +44,14 @@ class TripModal extends PureComponent {
 
 	}
 
+	onDuplicateClick = () => {
+    const { trip } = this.props
+		const tempTrip = {...trip, id: undefined, _id: undefined}
+
+		this.props.setTempTrip(tempTrip)
+    this.props.history.push('/trip')
+	}
+
 	render() {
 		const { trip } = this.props
 		return (
@@ -70,6 +78,9 @@ class TripModal extends PureComponent {
 				</Modal.Body>
 				<Modal.Footer>
 					{this.props.user && this.props.user.isAdmin &&
+					<button className="btn btn-primary" onClick={this.onDuplicateClick}>Duplicate Trip</button>
+					}
+					{this.props.user && this.props.user.isAdmin &&
 					<Link to={{ pathname: 'trip', search: 'editing' }} className="btn btn-primary">Edit Trip</Link>
 					}
 				</Modal.Footer>
@@ -87,8 +98,9 @@ TripModal = connect(state => {
 		}
 	},
 	{
-		setCurrentTrip
+		setCurrentTrip,
+    setTempTrip,
 	}
 )(TripModal)
 
-export default TripModal
+export default withRouter(TripModal)
