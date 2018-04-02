@@ -68,6 +68,12 @@ class TripModal extends PureComponent {
 					<TripData label="Date" value={this.renderDateString(trip.startTime, trip.endTime)}/>
 					<TripData label="Time"
 							  value={`${this.getMomentTime(trip.startTime)} - ${this.getMomentTime(trip.endTime)}`}/>
+          {this.props.user && this.props.user.isAdmin &&
+           <TripData label="Email" value={trip.email}/>
+          }
+          {this.props.user && this.props.user.isAdmin &&
+            <TripData label="Phone" value={trip.phone}/>
+          }
 					<TripData label="Guides" value={this.renderGuideString(trip.guides)}/>
 					<TripData label="Guests" value={trip.guests}/>
 					<TripData label="Cost" value={`$${trip.cost}`}/>
@@ -78,10 +84,10 @@ class TripModal extends PureComponent {
 				</Modal.Body>
 				<Modal.Footer>
 					{this.props.user && this.props.user.isAdmin &&
-					<button className="btn btn-primary" onClick={this.onDuplicateClick}>Duplicate Trip</button>
+				  	<button className="btn btn-primary" onClick={this.onDuplicateClick}>Duplicate Trip</button>
 					}
 					{this.props.user && this.props.user.isAdmin &&
-					<Link to={{ pathname: 'trip', search: 'editing' }} className="btn btn-primary">Edit Trip</Link>
+				  	<Link to={{ pathname: 'trip', search: 'editing' }} className="btn btn-primary">Edit Trip</Link>
 					}
 				</Modal.Footer>
 			</Modal.Dialog>
