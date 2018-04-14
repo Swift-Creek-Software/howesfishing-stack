@@ -58,7 +58,7 @@ class Calendar extends Component {
 
 	render() {
 		return (
-			<div className={`Calendar ${this.props.view === 'day' ? 'full' : ''}`}>
+			<div className={`Calendar ${this.props.view === 'day' ? 'full' : ''}`} id="no-print">
 				<AvailableGuides/>
 				<div className="refresh">
 					{this.props.user.isAdmin &&

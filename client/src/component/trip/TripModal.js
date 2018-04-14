@@ -11,7 +11,7 @@ import guidesById from '../../selectors/guidesById'
 import { setCurrentTrip, setTempTrip } from '../../actions/TripActions'
 
 import TripData from './TripData'
-
+import './TripModal.css'
 
 class TripModal extends PureComponent {
 	static propsTypes = {
