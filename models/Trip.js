@@ -14,7 +14,7 @@ const tripSchema = new Schema({
   cost: String,
   location: String,
   guides: Array,
-  clientEmailTemple: String,
+  clientEmailTemplate: String,
   notes: String,
   directions: String,
   userName: String,
