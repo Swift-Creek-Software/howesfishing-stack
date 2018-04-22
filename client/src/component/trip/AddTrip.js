@@ -313,7 +313,7 @@ class AddTrip extends Component {
 		const { handleSubmit } = this.props
 
 		const isEditing = this.props.location.search.indexOf('editing') > 0
-		const isAble = this.props.user.email === 'admin@aablefishing.com' || this.props.user.email === 'Mike@howesfishing.com'
+		const isAble = this.props.user.email === 'admin@aablefishing.com' || this.props.user.email === 'mike@howesfishing.com'
 
 		return (
 			<div className="form-wrapper AddTrip">
