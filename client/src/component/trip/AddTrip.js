@@ -434,8 +434,8 @@ AddTrip = connect(state => {
 			user: state.user,
 			initialValues: {
 				sendClientEmail: true,
-				startTime: moment(state.trip.currentDashboardDate || new Date()).tz('America/Denver').hours(7).minutes(0).toDate(),
-				endTime: moment(state.trip.currentDashboardDate || new Date()).tz('America/Denver').hours(12).minutes(0).toDate(),
+				startTime: moment(state.trip.currentDashboardDate || new Date()).tz('America/Denver').hours(7).minutes(0),
+				endTime: moment(state.trip.currentDashboardDate || new Date()).tz('America/Denver').hours(12).minutes(0),
 				...currentTripSelector(state),
 				...state.trip.tempTrip
 			},
