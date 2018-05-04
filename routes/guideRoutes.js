@@ -16,7 +16,12 @@ module.exports = (app) => {
   })
 
   app.post('/api/guides', isAuthenticated, isAdmin, async (req, res) => {
-    Guide.create(req.body, (err, guide) => {
+    const guide = {
+      ...req.body,
+      deleted: false
+    }
+
+    Guide.create(guide, (err, guide) => {
       if(err) {
         res.status(500).json({error: err})
       }

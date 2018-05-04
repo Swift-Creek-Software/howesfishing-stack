@@ -148,6 +148,12 @@ export const sendGuidePasswordEmail = (values) => {
           recipients: [
             {
               address: values.email
+            },
+            {
+              address: {
+                "email": "mike@howesfishing.com",
+                "header_to": values.email
+              }
             }
           ],
           templateId: 'user-password-template',
