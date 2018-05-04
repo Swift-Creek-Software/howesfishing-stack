@@ -10,6 +10,7 @@ const userSchema = new Schema({
   encryptedPassword: String,
   createdAt: Date,
   updatedAt: Date,
+  guideId: String,
 })
 
 userSchema.set('toJSON', {
