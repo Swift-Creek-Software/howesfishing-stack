@@ -32,6 +32,7 @@ module.exports = (app) => {
           return res.status(500).json({ error: err })
         }
         user.encryptedPassword = hash
+        user.deleted = false
 
         delete user.password
         delete user.confirmPassword
