@@ -20,6 +20,7 @@ const tripSchema = new Schema({
   userName: String,
   createdAt: Date,
   updatedAt: Date,
+  confirmationSent: Boolean,
 })
 
 tripSchema.set('toJSON', {
