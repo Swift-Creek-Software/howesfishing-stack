@@ -2,6 +2,7 @@ export const actionTypes = {
 	addTrip: 'ADD_TRIP',
 	addTripSuccess: 'ADD_TRIP_SUCCESS',
 	deleteTrip: 'DELETE_TRIP',
+	getTripForPhone: 'GET_TRIP_FOR_PHONE',
 	fetchTrips: 'FETCH_TRIPS',
 	fetchTripsSuccess: 'FETCH_TRIPS_SUCCESS',
 	setCurrentTrip: 'SET_CURRENT_TRIP',
@@ -54,16 +55,27 @@ export const updateTrip = (data) => {
 }
 
 export const deleteTrip = (id) => {
-	return {
-		type: actionTypes.deleteTrip,
-		payload: {
-			request: {
-				url: `trips/${id}`,
-				method: 'delete',
-			},
-			id
-		}
-	}
+  return {
+    type: actionTypes.deleteTrip,
+    payload: {
+      request: {
+        url: `trips/${id}`,
+        method: 'delete',
+      },
+      id
+    }
+  }
+}
+
+export const getTripForPhone = (phone) => {
+  return {
+    type: actionTypes.getTripForPhone,
+    payload: {
+      request: {
+        url: `trips/phone/${phone}`,
+      }
+    }
+  }
 }
 
 export const setCurrentTrip = (id = null) => {

@@ -19,6 +19,20 @@ module.exports = (app) => {
       })
   })
 
+  app.get('/api/trips/phone/:phone', isAuthenticated, async (req, res) => {
+    const phone = req.params.phone
+
+    return Trip.find({ deleted: false, phone })
+      .sort({ endTime: 'desc' })
+      .limit(1)
+      .exec((err, trips) => {
+        if (err) {
+          res.status(500).json({ error: err })
+        }
+        res.send(trips)
+      })
+  })
+
   app.post('/api/trips', isAuthenticated, isAdmin, async (req, res) => {
     Trip.create({...req.body, deleted: false}, (err, trip) => {
       if(err) {

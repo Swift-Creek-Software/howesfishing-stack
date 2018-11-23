@@ -15,7 +15,7 @@ import {
   sendClientCancellationEmail
 } from '../../actions/EmailActions'
 
-import { addTrip, updateTrip, deleteTrip, setCurrentTrip, clearTempTrip } from '../../actions/TripActions'
+import { addTrip, updateTrip, deleteTrip, setCurrentTrip, clearTempTrip , getTripForPhone} from '../../actions/TripActions'
 import guidesById from '../../selectors/guidesById'
 import currentTripSelector from '../../selectors/currentTripSelector'
 
@@ -239,6 +239,23 @@ class AddTrip extends Component {
     const startHours = newValue.hours()
     this.props.change('endTime', moment(newValue).tz('America/Denver').hour(startHours + 5))
   }
+  9325497006
+  onPhoneChange = (e) => {
+    const phone = e.target.value
+    console.log('phone changed', phone)
+    if (phone.length >=6) {
+      this.props.getTripForPhone(phone).then(res => {
+        console.log('res', res)
+        const trips = res.payload.data
+        if (trips && trips[0]) {
+          const {firstName, lastName, email} = trips[0]
+          this.props.change('firstName', firstName)
+          this.props.change('lastName', lastName)
+          this.props.change('email', email)
+        }
+      })
+    }
+  }
 
   onDeleteButtonClick = (event) => {
     event.preventDefault()
@@ -353,6 +370,7 @@ class AddTrip extends Component {
                      label="Phone number"
                      placeholder="(406) 555-5555"
                      type="phone"
+                     onChange={this.onPhoneChange}
               />
               }
               <Field name="startTime"
@@ -479,6 +497,7 @@ AddTrip = connect(state => {
     sendGuideCancellationEmail,
     sendClientCancellationEmail,
     clearTempTrip,
+    getTripForPhone,
   }
 )(AddTrip)
 
