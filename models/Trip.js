@@ -11,6 +11,7 @@ const tripSchema = new Schema({
   email: String,
   phone: String,
   guests: String,
+  kidsUnder12: String,
   cost: String,
   location: String,
   guides: Array,
@@ -18,6 +19,8 @@ const tripSchema = new Schema({
   notes: String,
   directions: String,
   userName: String,
+  hearAbout: String,
+  staying: String,
   createdAt: Date,
   updatedAt: Date,
 })

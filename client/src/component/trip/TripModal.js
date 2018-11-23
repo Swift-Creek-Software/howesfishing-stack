@@ -76,6 +76,9 @@ class TripModal extends PureComponent {
           }
 					<TripData label="Guides" value={this.renderGuideString(trip.guides)}/>
 					<TripData label="Guests" value={trip.guests}/>
+					{trip.kidsUnder12 &&
+           <TripData label="Kids Under 12" value={trip.kidsUnder12}/>
+          }
 					<TripData label="Cost" value={`$${trip.cost}`}/>
 					{this.props.locations[ trip.location ] &&
 						<TripData label="Location" value={this.props.locations[ trip.location ].name}/>

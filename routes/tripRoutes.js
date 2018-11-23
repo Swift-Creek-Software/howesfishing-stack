@@ -32,6 +32,7 @@ module.exports = (app) => {
   app.put('/api/trips/:id', isAuthenticated, isAdmin, async (req, res) => {
     const trip = {...req.body}
     Trip.findOneAndUpdate({_id: req.params.id}, {...trip, deleted: false}, (err, updated) => {
+      console.log('trip update: ', trip)
       if(err) {
         res.status(500).json({error: err})
       }
