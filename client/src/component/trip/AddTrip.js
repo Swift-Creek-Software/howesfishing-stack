@@ -242,10 +242,8 @@ class AddTrip extends Component {
   9325497006
   onPhoneChange = (e) => {
     const phone = e.target.value
-    console.log('phone changed', phone)
     if (phone.length >=6) {
       this.props.getTripForPhone(phone).then(res => {
-        console.log('res', res)
         const trips = res.payload.data
         if (trips && trips[0]) {
           const {firstName, lastName, email} = trips[0]
