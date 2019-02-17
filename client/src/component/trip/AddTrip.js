@@ -461,7 +461,21 @@ AddTrip = reduxForm({
 
 AddTrip = connect(state => {
     const selector = formValueSelector('addtrip')
-    return {
+
+    const tempTrip = state.trip.tempTrip ? {
+      ...state.trip.tempTrip,
+      startTime: state.trip.tempTrip && moment(state.trip.tempTrip.startTime).tz('America/Denver'),
+      endTime: state.trip.tempTrip && moment(state.trip.tempTrip.endTime).tz('America/Denver'),
+    } : null
+
+    const currentTrip = currentTripSelector(state) ? {
+      ...currentTripSelector(state),
+      startTime: currentTripSelector(state) && moment(currentTripSelector(state).startTime).tz('America/Denver'),
+      endTime: currentTripSelector(state) && moment(currentTripSelector(state).endTime).tz('America/Denver'),
+    } : null
+
+    console.log('current trup',currentTrip)
+    const props =  {
       guides: guidesById(state),
       endTime: selector(state, 'endTime'),
       clientEmail: selector(state, 'email'),
@@ -478,10 +492,12 @@ AddTrip = connect(state => {
         phone: '4062575214',
         startTime: moment(state.trip.currentDashboardDate || new Date()).tz('America/Denver').hours(7).minutes(0),
         endTime: moment(state.trip.currentDashboardDate || new Date()).tz('America/Denver').hours(12).minutes(0),
-        ...currentTripSelector(state),
-        ...state.trip.tempTrip
+        ...currentTrip,
+        ...tempTrip,
       },
     }
+    console.log('props', props)
+    return props
   },
   {
     change,

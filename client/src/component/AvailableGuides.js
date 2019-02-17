@@ -46,15 +46,19 @@ class AvailableGuides extends PureComponent {
 
   onMorningSelected = (e) => {
     const guideId = e.target.value
-    let date = this.props.currentDashboardDate ? moment(this.props.currentDashboardDate).tz('America/Denver') : moment().tz('America/Denver')
+    let date = this.props.currentDashboardDate ? moment(this.props.currentDashboardDate) : moment()
     const start = date.hours(7).minutes(0).seconds(0).toDate()
     const end = date.hours(12).minutes(0).seconds(0).toDate()
+    console.log('dashboard', this.props.currentDashboardDate)
+    console.log('date', date)
+    console.log('start', start)
+    console.log('end', end)
     this.createTripForTimeAndGuid(guideId, start, end)
   }
 
   onAfternoonSelected = (e) => {
     const guideId = e.target.value
-    let date = this.props.currentDashboardDate ? moment(this.props.currentDashboardDate).tz('America/Denver') : moment().tz('America/Denver')
+    let date = this.props.currentDashboardDate ? moment(this.props.currentDashboardDate) : moment()
     const start = date.hours(13).minutes(0).seconds(0).toDate()
     const end = date.hours(18).minutes(0).seconds(0).toDate()
     this.createTripForTimeAndGuid(guideId, start, end)
@@ -62,7 +66,7 @@ class AvailableGuides extends PureComponent {
 
   onTwilightSelected = (e) => {
     const guideId = e.target.value
-    let date = this.props.currentDashboardDate ? moment(this.props.currentDashboardDate).tz('America/Denver') : moment().tz('America/Denver')
+    let date = this.props.currentDashboardDate ? moment(this.props.currentDashboardDate) : moment()
     const start = date.hours(18).minutes(30).seconds(0).toDate()
     const end = date.hours(20).minutes(30).seconds(0).toDate()
     this.createTripForTimeAndGuid(guideId, start, end)
@@ -103,9 +107,8 @@ class AvailableGuides extends PureComponent {
   }
 
   render() {
-    let date = this.props.currentDashboardDate ? moment(this.props.currentDashboardDate).tz('America/Denver') : moment().tz('America/Denver')
+    let date = this.props.currentDashboardDate ? moment(this.props.currentDashboardDate) : moment()
     date = date.startOf('day')
-
     if (this.props.view === 'day' && this.props.user.isAdmin) {
       return (
         <div>

@@ -15,9 +15,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css'
 import './Calendar.css'
 
 
-BigCalendar.setLocalizer(
-	BigCalendar.momentLocalizer(moment)
-);
+const localizer = BigCalendar.momentLocalizer(moment)
 
 class Calendar extends Component {
 
@@ -69,6 +67,7 @@ class Calendar extends Component {
 					</div>
 				</div>
 				<BigCalendar
+          localizer={localizer}
 					popup
 					events={this.renderEventsList()}
 					startAccessor='start'
