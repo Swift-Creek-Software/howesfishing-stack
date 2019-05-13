@@ -342,6 +342,23 @@ class AddTrip extends Component {
           <FormHeader>Create Trip</FormHeader>
           <div className="panel-body">
             <div className="form-fields">
+              {!(isEditing && !isAble) &&
+              <Field name="phone"
+                     component={TextField}
+                     label="Phone number"
+                     placeholder="(406) 555-5555"
+                     type="phone"
+                     onChange={this.onPhoneChange}
+              />
+              }
+              {!(isEditing && !isAble) &&
+              <Field name="email"
+                     component={TextField}
+                     label="Email"
+                     placeholder="example@fishing.com"
+                     type="email"
+              />
+              }
               <Field name="firstName"
                      component={TextField}
                      label="First name"
@@ -354,23 +371,7 @@ class AddTrip extends Component {
                      placeholder="enter last name"
                      type="text"
               />
-              {!(isEditing && !isAble) &&
-              <Field name="email"
-                     component={TextField}
-                     label="Email"
-                     placeholder="example@fishing.com"
-                     type="email"
-              />
-              }
-              {!(isEditing && !isAble) &&
-              <Field name="phone"
-                     component={TextField}
-                     label="Phone number"
-                     placeholder="(406) 555-5555"
-                     type="phone"
-                     onChange={this.onPhoneChange}
-              />
-              }
+
               <Field name="startTime"
                      component={DateTimeField}
                      placeholder="04/11/2017 7:00 AM"

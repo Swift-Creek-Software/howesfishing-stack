@@ -74,6 +74,12 @@ class TripModal extends PureComponent {
           {this.props.user && this.props.user.isAdmin &&
             <TripData label="Phone" value={trip.phone}/>
           }
+          {this.props.user && this.props.user.isAdmin &&
+          <TripData label="Where Staying" value={trip.staying}/>
+          }
+          {this.props.user && this.props.user.isAdmin &&
+          <TripData label="Hear about us" value={trip.hearAbout}/>
+          }
 					<TripData label="Guides" value={this.renderGuideString(trip.guides)}/>
 					<TripData label="Guests" value={trip.guests}/>
 					{trip.kidsUnder12 &&
