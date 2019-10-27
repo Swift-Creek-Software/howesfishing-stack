@@ -135,12 +135,12 @@ class AddTrip extends Component {
           // send client/admin email
           this.props.sendClientConfirmationEmail({ ...values, userName: this.props.user.name.split(' ')[ 0 ] })
         }
+        this.props.setCurrentTrip(values.id)
         this.props.history.push('/dashboard')
 
       })
     } else {
       this.props.addTrip(this.getTripValues(values)).then(() => {
-
         // send info to guides
         this.sendGuidesInfo(values.guides, values.notes, values.startTime)
 
@@ -475,7 +475,6 @@ AddTrip = connect(state => {
       endTime: currentTripSelector(state) && moment(currentTripSelector(state).endTime).tz('America/Denver'),
     } : null
 
-    console.log('current trup',currentTrip)
     const props =  {
       guides: guidesById(state),
       endTime: selector(state, 'endTime'),
@@ -497,7 +496,6 @@ AddTrip = connect(state => {
         ...tempTrip,
       },
     }
-    console.log('props', props)
     return props
   },
   {

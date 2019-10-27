@@ -36,6 +36,8 @@ const currentTrip = (state = null, action) => {
 	switch(action.type) {
 		case actionTypes.setCurrentTrip:
 			return action.payload
+		case actionTypes.addTripSuccess:
+			return action.payload.data['_id']
 		case userTypes.logout:
 			return null
 		default:
