@@ -1,6 +1,7 @@
 import { fetchTrips, setLoading } from './TripActions'
 import { fetchGuides, setCurrentGuide } from './GuideActions'
 import { fetchLocations } from './LocationActions'
+import {startOfMonth, endOfMonth} from 'date-fns'
 
 export const actionTypes = {
 	login: 'LOGIN',
@@ -47,10 +48,12 @@ export const userLogin = (email, password) => {
 					dispatch(setCurrentGuide(user.guideId))
 				}
 				localStorage.setItem('user', JSON.stringify({ ...user, token: response.payload.data.token }))
+				const startDate = startOfMonth(new Date())
+				const endDate = endOfMonth(new Date())
 				setTimeout(() => {
 					Promise.all([
 						dispatch(fetchGuides()),
-						dispatch(fetchTrips()),
+						dispatch(fetchTrips(startDate, endDate)),
 						dispatch(fetchLocations()),
 					]).then(() => {
 						dispatch(setUserLoggedIn())
@@ -71,14 +74,15 @@ export const fetchDataWithUser = (user) => {
 	return dispatch => {
 		dispatch(setLoading(true))
 		dispatch(setUserFromState(user))
-
+		const startDate = startOfMonth(new Date())
+		const endDate = endOfMonth(new Date())
 		setTimeout(() => {
 			if (!user.isAdmin) {
 				dispatch(setCurrentGuide(user.guideId))
 			}
 			Promise.all([
 				dispatch(fetchGuides()),
-				dispatch(fetchTrips()),
+				dispatch(fetchTrips(startDate, endDate)),
 				dispatch(fetchLocations()),
 			]).then(() => {
 				dispatch(setUserLoggedIn())

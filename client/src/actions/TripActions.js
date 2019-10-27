@@ -14,14 +14,16 @@ export const actionTypes = {
 	clearTempTrip: 'CLEAR_TEMP_TRIP',
 }
 
-export const fetchTrips = (limit = 300) => {
+export const fetchTrips = (startDate, endDate, limit = 1000) => {
 	return {
 		type: actionTypes.fetchTrips,
 		payload: {
 			request: {
 				url: `trips`,
 				params: {
-					limit
+					limit,
+					startDate,
+					endDate,
 				}
 			}
 		}

@@ -5,10 +5,10 @@ const Trip = mongoose.model('Trip')
 
 module.exports = (app) => {
   app.get('/api/trips', isAuthenticated, async (req, res) => {
-    const { limit } = req.query
+    const { limit, startDate, endDate } = req.query
     
-    return Trip.find({ deleted: false })
-      .sort({ endTime: 'desc' })
+    return Trip.find({ deleted: false, startTime: {"$gte": new Date(startDate), "$lt": new Date(endDate)} })
+      .sort({ endTime: 'asc'})
       .limit(parseInt(limit))
       .exec((err, trips) => {
         if (err) {

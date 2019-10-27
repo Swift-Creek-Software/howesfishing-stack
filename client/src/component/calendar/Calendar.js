@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import moment from 'moment-timezone';
 import { connect } from 'react-redux'
 import BigCalendar from 'react-big-calendar';
+import {startOfMonth, endOfMonth, startOfWeek, endOfWeek, startOfDay, endOfDay} from 'date-fns'
 
 import guideTripsSelector from '../../selectors/guideTripsSelector'
 
@@ -40,14 +41,32 @@ class Calendar extends Component {
 
 	onRefreshClick = (e) => {
 		e.preventDefault()
+		let date = this.props.currentDashboardDate
+		date = date ? new Date(date) : new Date()
+		const startDate = startOfMonth(new Date(date))
+		const endDate = endOfMonth(new Date(date))
 		this.props.setLoading(true)
-		this.props.fetchTrips().then(() => {
+		this.props.fetchTrips(startDate, endDate).then(() => {
 			this.props.setLoading()
 		})
 	}
 
 	onNavigate = (date) => {
-		this.props.setCurrentDate(date)
+		const {view, fetchTrips, setCurrentDate} = this.props
+		setCurrentDate(date)
+		let startDate, endDate
+		if (!view || view === 'month' || view ==='agenda') {
+			startDate = startOfMonth(new Date(date))
+			endDate = endOfMonth(new Date(date))
+		} else if (view === 'week') {
+			startDate = startOfWeek(new Date(date))
+			endDate = endOfWeek(new Date(date))
+		} else {
+			// we are in day
+			startDate = startOfDay(new Date(date))
+			endDate = endOfDay(new Date(date))
+		}
+		fetchTrips(startDate, endDate)
 	}
 
 	onView = (view) => {
@@ -86,7 +105,8 @@ export default connect(state => {
 	return {
 		trips: guideTripsSelector(state),
 		user: state.user,
-		view: state.trip.view
+		view: state.trip.view,
+		currentDashboardDate: state.trip.currentDashboardDate,
 	}
 }, {
 	fetchTrips,
