@@ -7,7 +7,7 @@ module.exports = (app) => {
   app.get('/api/trips', isAuthenticated, async (req, res) => {
     const { limit, startDate, endDate } = req.query
     
-    return Trip.find({ deleted: false, startTime: {"$gte": new Date(startDate), "$lt": new Date(endDate)} })
+    return Trip.find({ deleted: false, startTime: {"$lt": new Date(endDate)}, endTime: {"$gte": new Date(startDate), }})
       .sort({ endTime: 'asc'})
       .limit(parseInt(limit))
       .exec((err, trips) => {
