@@ -59,6 +59,8 @@ export const userLogin = (email, password) => {
 						dispatch(setUserLoggedIn())
 						dispatch(setLoading())
 						resolve()
+					}).catch(() => {
+						dispatch(logout())
 					})
 				}, 500)
 
@@ -87,6 +89,8 @@ export const fetchDataWithUser = (user) => {
 			]).then(() => {
 				dispatch(setUserLoggedIn())
 				dispatch(setLoading())
+			}).catch(() => {
+				dispatch(logout())
 			})
 		}, 100)
 	}

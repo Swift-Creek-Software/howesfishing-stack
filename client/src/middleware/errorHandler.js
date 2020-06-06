@@ -9,7 +9,7 @@ export default function ({ dispatch }) {
 		if (endsWith(type, '_FAIL')) {
 			const status = action.error && action.error.response && action.error.response.status
 			if (status === 401) {
-				dispatch(logout())
+				// dispatch(logout())
 
 				return
 			}
