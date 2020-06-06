@@ -180,19 +180,6 @@ class AddTrip extends Component {
         guideDetail.phones.forEach(phone => {
           this.props.sendSMS(phone, `${guideDetail.name} - ${guideMessage}`)
         })
-
-        if (guideDetail.emails && guideDetail.emails.length > 0) {
-          const guideEmailValues = {
-            emails: guideDetail.emails,
-            body: guideMessage,
-            name: guideDetail.name,
-            date,
-
-          }
-          // send guide emails
-          this.props.sendGuideConfirmationEmail(guideEmailValues)
-        }
-
       }
     })
   }
