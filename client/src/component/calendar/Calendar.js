@@ -74,6 +74,9 @@ class Calendar extends Component {
 	}
 
 	render() {
+		let date = this.props.currentDashboardDate
+		date = date ? new Date(date) : new Date()
+
 		return (
 			<div className={`Calendar ${this.props.view === 'day' ? 'full' : ''}`} id="no-print">
 				<AvailableGuides/>
@@ -91,7 +94,7 @@ class Calendar extends Component {
 					events={this.renderEventsList()}
 					startAccessor='start'
 					endAccessor='end'
-					defaultDate={new Date()}
+					defaultDate={date}
 					components={{ eventWrapper: CalendarMonthEvent }}
 					onNavigate={this.onNavigate}
 					onView={this.onView}
