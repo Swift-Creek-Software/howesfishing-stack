@@ -38,10 +38,10 @@ Trip.find({ deleted: false, endTime: {"$gte": startOfDay(new Date()), "$lt": end
       campaignId: 'Client confirmation',
     }
 
-    return EmailService
-      .sendEmail(params)
-      .catch(err => {
-        // error sending email
-        return res.status(401).json({ err })
-      })
+    // return EmailService
+    //   .sendEmail(params)
+    //   .catch(err => {
+    //     // error sending email
+    //     return res.status(401).json({ err })
+    //   })
   })
