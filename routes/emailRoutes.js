@@ -13,8 +13,8 @@ module.exports = (app) => {
       .then(data => {
         return Email.create({ sparkpostResponse: data, params: params })
       })
-      .then(emailLogRecord => {
-        return res.send(emailLogRecord)
+      .then(() => {
+        return res.send("ok")
       })
       .catch(err => {
         // error sending email

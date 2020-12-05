@@ -9,7 +9,25 @@ require('./models/User')
 require('./models/Location')
 require('./models/Trip')
 
-mongoose.connect(keys.mongoURI, { useMongoClient: true })
+console.log('key.mongoUri',keys.mongoURI)
+mongoose.connect(keys.mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true
+})
+
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  // we're connected!
+  console.log('connected')
+  mongoose.connection.db.listCollections().toArray(function (err, names) {
+    console.log(names); // [{ name: 'dbname.myCollection' }]
+    module.exports.Collection = names;
+  });
+});
 mongoose.Promise = global.Promise;
 
 app.use(require('./middleware/allowCrossDomain'))

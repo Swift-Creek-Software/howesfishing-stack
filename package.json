@@ -23,7 +23,8 @@
     "date-fns": "^2.6.0",
     "express": "^4.16.2",
     "jsonwebtoken": "^7.3.0",
-    "mongoose": "^4.13.9",
+    "mongodb": "3.6.3",
+    "mongoose": "5.11.4",
     "sparkpost": "^2.1.2",
     "twilio": "^3.11.0"
   },

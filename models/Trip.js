@@ -29,4 +29,5 @@ tripSchema.set('toJSON', {
   virtuals: true
 });
 
-mongoose.model('Trip', tripSchema, 'trip')
+const Trip = mongoose.model('Trip', tripSchema, 'trip')
+module.exports = Trip;

@@ -16,4 +16,5 @@ guideSchema.set('toJSON', {
   virtuals: true
 });
 
-mongoose.model('Guide', guideSchema, 'guide')
+const Guide = mongoose.model('Guide', guideSchema, 'guide')
+module.exports = Guide

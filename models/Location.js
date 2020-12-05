@@ -13,4 +13,5 @@ locationSchema.set('toJSON', {
 });
 
 
-mongoose.model('Location', locationSchema, 'location')
+const Location = mongoose.model('Location', locationSchema, 'location')
+module.exports = Location;

@@ -1,15 +1,14 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const jwToken = require('../services/jwToken')
-
-const User = mongoose.model('User')
+const User = require('../models/User')
 
 module.exports = (app) => {
   app.post('/api/login', async (req, res) => {
     const email = req.body.email
     const password = req.body.password
-
     User.findOne({ email: email, deleted: false }, (err, user) => {
+      console.log('err',err, user)
       if (err) {
         return res.serverError(err)
       } else if (!user) {

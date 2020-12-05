@@ -5,4 +5,5 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   // use dev keys
   module.exports = require('./dev')
+  console.log('using dev keys')
 }

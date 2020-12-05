@@ -6,4 +6,6 @@ const emailSchema = new Schema({
   params: Object
 })
 
-mongoose.model('Email', emailSchema, 'email')
+const Email = mongoose.model('Email', emailSchema, 'email')
+
+module.exports = Email;
