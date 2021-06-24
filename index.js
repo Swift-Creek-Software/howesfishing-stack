@@ -24,7 +24,6 @@ db.once('open', function() {
   // we're connected!
   console.log('connected')
   mongoose.connection.db.listCollections().toArray(function (err, names) {
-    console.log(names); // [{ name: 'dbname.myCollection' }]
     module.exports.Collection = names;
   });
 });

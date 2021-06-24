@@ -124,34 +124,35 @@ class AddTrip extends Component {
 
   handleSubmit = (values) => {
     values.directions = this.getDirections(values.location)
+    this.sendGuidesInfo(values.guides, values.notes, values)
 
-    if (values.id) {
-      this.props.updateTrip(this.getTripValues(values)).then(() => {
-
-        // send info to guides
-        this.sendGuidesInfo(values.guides, values.notes, values.startTime)
-
-        if (values.sendClientEmail) {
-          // send client/admin email
-          this.props.sendClientConfirmationEmail({ ...values, userName: this.props.user.name.split(' ')[ 0 ] })
-        }
-        this.props.setCurrentTrip(values.id)
-        this.props.history.push('/dashboard')
-
-      })
-    } else {
-      this.props.addTrip(this.getTripValues(values)).then(() => {
-        // send info to guides
-        this.sendGuidesInfo(values.guides, values.notes, values.startTime)
-
-        if (values.sendClientEmail) {
-          // send client/admin email
-          this.props.sendClientConfirmationEmail({ ...values, userName: this.props.user.name.split(' ')[ 0 ] })
-        }
-        this.props.history.push('/dashboard')
-
-      })
-    }
+    // if (values.id) {
+    //   this.props.updateTrip(this.getTripValues(values)).then(() => {
+    //
+    //     // send info to guides
+    //     this.sendGuidesInfo(values.guides, values.notes, values)
+    //
+    //     if (values.sendClientEmail) {
+    //       // send client/admin email
+    //       this.props.sendClientConfirmationEmail({ ...values, userName: this.props.user.name.split(' ')[ 0 ] })
+    //     }
+    //     this.props.setCurrentTrip(values.id)
+    //     this.props.history.push('/dashboard')
+    //
+    //   })
+    // } else {
+    //   this.props.addTrip(this.getTripValues(values)).then(() => {
+    //     // send info to guides
+    //     this.sendGuidesInfo(values.guides, values.notes, values)
+    //
+    //     if (values.sendClientEmail) {
+    //       // send client/admin email
+    //       this.props.sendClientConfirmationEmail({ ...values, userName: this.props.user.name.split(' ')[ 0 ] })
+    //     }
+    //     this.props.history.push('/dashboard')
+    //
+    //   })
+    // }
 
   }
 
@@ -169,13 +170,13 @@ class AddTrip extends Component {
     }
   }
 
-  sendGuidesInfo = (guides, notes, date) => {
+  sendGuidesInfo = (guides, notes, trip) => {
     guides.forEach(guide => {
       if (guide.sendConfirmation) {
         //if we checked the box to email the guide
         const guideDetail = this.props.guides[ guide.id ]
-        const guideMessage = `${guide.textTemplate} ${notes ? `Notes: ${notes}` : ''}`
-
+        const guideNames = guides.map(g => this.props.guides[ g.id ].name)
+        const guideMessage = `${guide.textTemplate} ${notes ? `Notes: ${notes}` : ''} - ${trip.firstName} ${trip.lastName} - ${guideNames.join(', ')}`
         // send guide texts
         guideDetail.phones.forEach(phone => {
           this.props.sendSMS(phone, `${guideDetail.name} - ${guideMessage}`)

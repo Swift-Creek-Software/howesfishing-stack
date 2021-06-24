@@ -14,6 +14,7 @@ import AvailableGuides from '../AvailableGuides'
 
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import './Calendar.css'
+import CalendarAgendaEvent from "./CalendarAgendaEvent"
 
 
 const localizer = BigCalendar.momentLocalizer(moment)
@@ -95,7 +96,7 @@ class Calendar extends Component {
 					startAccessor='start'
 					endAccessor='end'
 					defaultDate={date}
-					components={{ eventWrapper: CalendarMonthEvent }}
+					components={{ eventWrapper: CalendarMonthEvent, agenda: {event: CalendarAgendaEvent} }}
 					onNavigate={this.onNavigate}
 					onView={this.onView}
 				/>
