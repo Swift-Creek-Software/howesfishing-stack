@@ -124,35 +124,34 @@ class AddTrip extends Component {
 
   handleSubmit = (values) => {
     values.directions = this.getDirections(values.location)
-    this.sendGuidesInfo(values.guides, values.notes, values)
 
-    // if (values.id) {
-    //   this.props.updateTrip(this.getTripValues(values)).then(() => {
-    //
-    //     // send info to guides
-    //     this.sendGuidesInfo(values.guides, values.notes, values)
-    //
-    //     if (values.sendClientEmail) {
-    //       // send client/admin email
-    //       this.props.sendClientConfirmationEmail({ ...values, userName: this.props.user.name.split(' ')[ 0 ] })
-    //     }
-    //     this.props.setCurrentTrip(values.id)
-    //     this.props.history.push('/dashboard')
-    //
-    //   })
-    // } else {
-    //   this.props.addTrip(this.getTripValues(values)).then(() => {
-    //     // send info to guides
-    //     this.sendGuidesInfo(values.guides, values.notes, values)
-    //
-    //     if (values.sendClientEmail) {
-    //       // send client/admin email
-    //       this.props.sendClientConfirmationEmail({ ...values, userName: this.props.user.name.split(' ')[ 0 ] })
-    //     }
-    //     this.props.history.push('/dashboard')
-    //
-    //   })
-    // }
+    if (values.id) {
+      this.props.updateTrip(this.getTripValues(values)).then(() => {
+
+        // send info to guides
+        this.sendGuidesInfo(values.guides, values.notes, values)
+
+        if (values.sendClientEmail) {
+          // send client/admin email
+          this.props.sendClientConfirmationEmail({ ...values, userName: this.props.user.name.split(' ')[ 0 ] })
+        }
+        this.props.setCurrentTrip(values.id)
+        this.props.history.push('/dashboard')
+
+      })
+    } else {
+      this.props.addTrip(this.getTripValues(values)).then(() => {
+        // send info to guides
+        this.sendGuidesInfo(values.guides, values.notes, values)
+
+        if (values.sendClientEmail) {
+          // send client/admin email
+          this.props.sendClientConfirmationEmail({ ...values, userName: this.props.user.name.split(' ')[ 0 ] })
+        }
+        this.props.history.push('/dashboard')
+
+      })
+    }
 
   }
 
