@@ -13,7 +13,7 @@ mongoose.Promise = global.Promise;
 
 const day = addDays(utcToZonedTime(new Date(), 'America/Denver'), 3);
 
-Trip.find({ deleted: false, sendClientEmail: true, endTime: {"$gte": startOfDay(day), "$lt": endOfDay(day)} })
+Trip.find({ deleted: false, sendClientEmail: true, startTime: {"$gte": startOfDay(day), "$lt": endOfDay(day)} })
   .sort({ endTime: 'asc'})
   .exec((err, trips) => {
     if (err) {
