@@ -2,6 +2,7 @@ const EmailService = require('../services/EmailService')
 const mongoose = require('mongoose')
 const keys = require('../config/keys')
 const {startOfDay, endOfDay, format, addDays} = require('date-fns')
+const {utcToZonedTime} = require('date-fns-tz')
 
 require('../models/Trip')
 
@@ -10,7 +11,7 @@ const Trip = mongoose.model('Trip')
 mongoose.connect(keys.mongoURI, { useMongoClient: true })
 mongoose.Promise = global.Promise;
 
-const day = addDays(new Date(), 3);
+const day = addDays(utcToZonedTime(new Date(), 'America/Denver'), 3);
 
 Trip.find({ deleted: false, endTime: {"$gte": startOfDay(day), "$lt": endOfDay(day)} })
   .sort({ endTime: 'asc'})
