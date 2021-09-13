@@ -11,9 +11,9 @@ const Trip = mongoose.model('Trip')
 mongoose.connect(keys.mongoURI, { useMongoClient: true })
 mongoose.Promise = global.Promise;
 
-const day = addDays(new Date(), 3);
-const startDay = utcToZonedTime(startOfDay(day), 'America/Denver')
-const endDay = utcToZonedTime(endOfDay(day), 'America/Denver')
+const day = addDays(utcToZonedTime(new Date(), 'America/Denver'), 3);
+const startDay = startOfDay(day)
+const endDay = endOfDay(day)
 Trip.find({ deleted: false, sendClientEmail: true, startTime: {"$gte": startDay, "$lt": endDay} })
   .sort({ endTime: 'asc'})
   .exec((err, trips) => {
