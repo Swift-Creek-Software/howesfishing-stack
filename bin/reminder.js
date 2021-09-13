@@ -11,8 +11,10 @@ const Trip = mongoose.model('Trip')
 mongoose.connect(keys.mongoURI, { useMongoClient: true })
 mongoose.Promise = global.Promise;
 
-const day = addDays(utcToZonedTime(new Date(), 'America/Denver'), 3);
-Trip.find({ deleted: false, sendClientEmail: true, startTime: {"$gte": startOfDay(day), "$lt": endOfDay(day)} })
+const day = addDays(new Date(), 3);
+const startDay = utcToZonedTime(startOfDay(day), 'America/Denver')
+const endDay = utcToZonedTime(endOfDay(day), 'America/Denver')
+Trip.find({ deleted: false, sendClientEmail: true, startTime: {"$gte": startDay, "$lt": endDay} })
   .sort({ endTime: 'asc'})
   .exec((err, trips) => {
     if (err) {
@@ -36,8 +38,8 @@ Trip.find({ deleted: false, sendClientEmail: true, startTime: {"$gte": startOfDa
       templateData: {
         trips,
         day,
-        startDay: startOfDay(day),
-        endDay: endOfDay(day),
+        startDay,
+        endDay,
         subject: `Fishing Trip Reminder ${format(day, 'MM/dd/yyyy')}`,
       },
       campaignId: 'Client confirmation',
