@@ -27,12 +27,12 @@ Trip.find({ deleted: false, sendClientEmail: true, startTime: {"$gte": startDay,
         {
           address: 'grossmail1@gmail.com'
         },
-        // {
-        //   address: {
-        //     "email": "reservations@howesfishing.com",
-        //     "header_to": 'grossmail1@gmail.com'
-        //   }
-        // }
+        {
+          address: {
+            "email": "reservations@howesfishing.com",
+            "header_to": 'grossmail1@gmail.com'
+          }
+        }
       ],
       templateId: 'client-follow-up',
       templateData: {
